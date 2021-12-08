@@ -4,7 +4,11 @@ import './styles/css/dx/dx.style.css'
 // import logo from './logo.svg';
 import React, {Component} from 'react';
 import Home from './view/home/Home';
+import DevGrid from './view/grid/DevGrid';
+import SenchaGrid from './view/grid/SenchaGrid';
+import WijmoGrid from './view/grid/WijmoGrid';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 class App extends Component{
 
@@ -15,7 +19,14 @@ class App extends Component{
   render(){
     return(
       <div>
-        <Home />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" exact element={<Home/>} />
+            <Route path="/DevGrid" element={<DevGrid/>} />
+            <Route path="/SenchaGrid" element={<SenchaGrid/>} />
+            <Route path="/WijmoGrid" element={<WijmoGrid/>} />
+          </Routes>
+        </BrowserRouter>
       </div>
     )
   }
