@@ -1,0 +1,454 @@
+{
+  "systemCode": "DSP",
+  "title": "",
+  "serviceURL": "http://dspdevpi.poscoenc.com/Services/DSP/WebServices/AF_Payment.asmx",
+  "method": "GetPaymentHistoryList",
+  "parameter": ",,,\"2020-01-01\",\"2021-10-30\",,,,,,,\"1\"",
+  "userId": "S10332",
+  "tableIndex": 0,
+  "authString": "XC5seHbDCOVOQYv0N0VrxBbLKWth%2FewqWuud0YkLWKFRNLz2mpLaaIyv3c2rDgonmfnP5%2FVYV%2B4pByZRRe6UlKLx7MzW%2BxVhPbADuQ7u5X2kH6sohgqOe1qk0vjj1SuFwM6Y0aQJtAusratsshrZDW0aT6wJh2ZqvrWTpXkJhuK7DRbW3eu2N%2BpFbwxg4eDuTHNLE%2BSj2YzpBpJi1E0LyIKS0bEbBKwJ%2Bk1eL4D7meqdXp8fa%2BvviPYUhcLHQu%2F8vo0hjwqia1xspwXcS1HMgEHYA%2BlmYvYb0KCv%2FHwyf9CEnwoskDC3ZNO%2FJwSC4o%2BpiDxQsvZqG9I0kXz%2FFtMKM9QMmxwXV7NmYwKzuup3MSzBjlsJ0D1RLlt0bpFE%2F9ZYpLpdqyF0KHV%2BEXQVp4H5wuHUHuckBnpL1LRipISCDgHmx7jl2XIEZWSrHCn33UVXU4V2nYuxuLMPPGuhydvDek5vZuncJsctjAytboUdwpYi4JwWJoe2KxQ8%2BxwxOuesgOaRy7fo2HYde%2FvHWgm73g%2FGTwJBdjmFUY9ntcUCcSLSjEr6IpO6OU53jpBWXKlcMl1N3Agh%2FdvVd5wP51vcwjrosuee5hlpxw%2FVhK%2FS%2BhQC1zYg3R1A9Kt%2Bfo6DrOgRx0yOIIzMoXbIgzyoGQQw3QWkaI3tAdfWwgaXdQ7HftPNXkS%2F62i38v1tOL2cEW5OUBIAtavbPEJ%2Fis6EKvroofWSPp5cGxGT7ULHxUDjEcDlRQs8TE9FDoIDhP6fE2eUBFlAtmnYQpm4CDb5QhEb0Q%3D%3D",
+  "note": "413 x 44",
+  "dataUrl": "https://poc.poscoenc.com/scenarios/DSP_0b1b649b-7cb0-e283-7c81-aba0e8f881c6.json",
+  "columns": [
+    {
+      "colname": "RowNo",
+      "caption": "순번",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "RowNo"
+    },
+    {
+      "colname": "PjtCode",
+      "caption": "프로젝트코드",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PjtCode"
+    },
+    {
+      "colname": "CtrtNo",
+      "caption": "계약번호",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "CtrtNo"
+    },
+    {
+      "colname": "PfmContTypeCode",
+      "caption": "프로젝트명",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PfmContTypeCode"
+    },
+    {
+      "colname": "OrdrNo",
+      "caption": "",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "OrdrNo"
+    },
+    {
+      "colname": "PaymtSeqNo",
+      "caption": "",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtSeqNo"
+    },
+    {
+      "colname": "ChgSeq",
+      "caption": "차수",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "ChgSeq"
+    },
+    {
+      "colname": "VrfDate",
+      "caption": "",
+      "datatype": "date",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "VrfDate"
+    },
+    {
+      "colname": "CtrtName",
+      "caption": "계약건명",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "CtrtName"
+    },
+    {
+      "colname": "VndrCode",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "VndrCode"
+    },
+    {
+      "colname": "VndrName",
+      "caption": "계약업체",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "VndrName"
+    },
+    {
+      "colname": "PaymtCurCode",
+      "caption": "통화",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtCurCode"
+    },
+    {
+      "colname": "VrfAmt",
+      "caption": "검수금액",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "VrfAmt"
+    },
+    {
+      "colname": "PaymtSchdDate",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtSchdDate"
+    },
+    {
+      "colname": "SetlDate",
+      "caption": "품의일자",
+      "datatype": "date",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "SetlDate"
+    },
+    {
+      "colname": "InvoiceAprvDate",
+      "caption": "전표승인일 ",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "InvoiceAprvDate"
+    },
+    {
+      "colname": "TaxBillIssueDate",
+      "caption": "계산서발행일",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "TaxBillIssueDate"
+    },
+    {
+      "colname": "PaymtDate",
+      "caption": "실지급일",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtDate"
+    },
+    {
+      "colname": "RealPaymtAmt",
+      "caption": "실지급액",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "RealPaymtAmt"
+    },
+    {
+      "colname": "InvoiceNo",
+      "caption": "전표번호",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "InvoiceNo"
+    },
+    {
+      "colname": "ProgStusCode",
+      "caption": "진행상태",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "ProgStusCode"
+    },
+    {
+      "colname": "ProgStusName",
+      "caption": "진행상태",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "ProgStusName"
+    },
+    {
+      "colname": "InvoiceProgStusCode",
+      "caption": "ERP 상태",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "InvoiceProgStusCode"
+    },
+    {
+      "colname": "PjtName",
+      "caption": "프로젝트명",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PjtName"
+    },
+    {
+      "colname": "PaymtTypeCode",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtTypeCode"
+    },
+    {
+      "colname": "PaymtTypeName",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtTypeName"
+    },
+    {
+      "colname": "PaymtGubun",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtGubun"
+    },
+    {
+      "colname": "CtrtSeqNo",
+      "caption": "",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "CtrtSeqNo"
+    },
+    {
+      "colname": "CtrtCurCode",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "CtrtCurCode"
+    },
+    {
+      "colname": "FIssueYN",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "FIssueYN"
+    },
+    {
+      "colname": "TaxBillDocuNo",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "TaxBillDocuNo"
+    },
+    {
+      "colname": "Dti_No",
+      "caption": "",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "Dti_No"
+    },
+    {
+      "colname": "JobFuncDvsCode",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "JobFuncDvsCode"
+    },
+    {
+      "colname": "CoSclCodeName",
+      "caption": "업체구분",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "CoSclCodeName"
+    },
+    {
+      "colname": "LegalPaymtDeadlineDate",
+      "caption": "지급기한",
+      "datatype": "date",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "LegalPaymtDeadlineDate"
+    },
+    {
+      "colname": "DueDate",
+      "caption": "법정지급기한",
+      "datatype": "date",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "DueDate"
+    },
+    {
+      "colname": "DiffDueDate",
+      "caption": "경과일수",
+      "datatype": "number",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "DiffDueDate"
+    },
+    {
+      "colname": "ComPaymtDateYn",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "ComPaymtDateYn"
+    },
+    {
+      "colname": "CtrtChgrEmplIDName",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "CtrtChgrEmplIDName"
+    },
+    {
+      "colname": "PaymtChgrEmplIDName",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PaymtChgrEmplIDName"
+    },
+    {
+      "colname": "VerifierEmplIDName",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "VerifierEmplIDName"
+    },
+    {
+      "colname": "CtrtMigTypeCode",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "CtrtMigTypeCode"
+    },
+    {
+      "colname": "PrePaymtSetlStus",
+      "caption": "대금조기집행품의서",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PrePaymtSetlStus"
+    },
+    {
+      "colname": "PrePaymtSetlFileAppdPssblYN",
+      "caption": "",
+      "datatype": "string",
+      "readonly": false,
+      "format": "",
+      "halign": "",
+      "visible": true,
+      "dataField": "PrePaymtSetlFileAppdPssblYN"
+    }
+  ]
+}

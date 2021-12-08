@@ -1,0 +1,481 @@
+﻿.main-wrap {
+    margin:0 -15px;
+}
+
+@media (max-width:992px) {
+.container {padding-top: 46px;}}
+
+.tbl-list>tbody>tr:nth-of-type(odd) {background-color: inherit;}
+
+.main-notice-wrap {
+    display:block;
+    position:relative;
+    width:100%;
+    padding:.5em 15px;
+    overflow: hidden;
+    background-color: #4773aa;
+    color: #fff;
+    cursor: pointer;
+}
+.main-notice-wrap:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.main-notice-wrap .notice-date {
+    position:absolute;
+    left:30px;
+    top:1.5px;
+    width:135px;
+    padding:.5em;
+    font-size:.9em;
+    color:rgba(255,255,255,.5);
+}
+.main-notice-wrap i {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+}
+.main-notice-wrap .notice-content {
+    display:block;
+    padding-left:125px;
+    width:100%;
+    color:rgba(255,255,255,.8);
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-word-wrap: break-word;
+    word-wrap:break-word;
+}
+
+
+/*내 프로젝트 체크박스 커스텀*/
+
+.main-myproject {position: relative; padding-top: 4.5px;}
+.main-myproject label {color: #4c67b0;}
+.main-myproject input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+  position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip:rect(0,0,0,0);
+   border: 0
+}
+.main-myproject input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.main-myproject input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+  content: '';
+  display: inline-block;
+  width: 16px;  /* 체크박스의 너비를 지정 */
+  height: 16px;  /* 체크박스의 높이를 지정 */
+  line-height: 16px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -4px 8px 0 0;
+  text-align: center; 
+  vertical-align: middle;
+  background: #fff;
+  border: 1px solid #b6b6b6;
+}
+.main-myproject input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+  content: '\f00c';  /* 체크표시 유니코드 사용 */
+  color: #4c67b0;
+  background: #fff;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+.main-tlt-wrap{
+    display:block;
+    clear:both;
+    background-color: #f5f7f8;
+}
+.main-tlt-wrap:after{
+    display:block;
+    clear:both;
+    content:" ";
+}
+.main-tlt{
+    display:inline-block;
+    float:left;
+    padding:10px 5px 5px 5px;
+}
+.main-tlt .btn{
+    float:right;
+    color:rgba(23,58,96,.4);
+    font-size:1.25em;
+}
+.main-tlt .btn:first-child{
+    float:left;
+}
+.main-tlt h2{
+    display:table;
+    float:left;
+    font-size:24px;
+    color:#666;
+}
+.main-tlt h2 span{
+    display:inline-block;
+    margin:.2em .5em;
+}
+.main-tlt .form-year{
+    border:none;
+    margin-top:-.3em;
+    padding:.3em;
+    background-color: transparent !important;
+}
+
+.main-tlt-wrap .fr {
+    position:relative;
+    top: 10px;
+    right: 15px;
+}
+.main-select-wrap .project-search {
+    border: none;
+    padding: .4em;
+    width: 90px;
+    background-color: transparent !important;
+    font-weight: bold;
+    margin: -3px 5px 0 15px;
+}
+.main-select-wrap .project-search-result {
+    display: inline-block;
+    background-color: #ebf0f3;
+    color: #317dd3;
+    text-align: center;
+    padding: .5em 1em;
+    position: absolute;
+    top: 12px;
+    border-radius: 20px;
+}
+
+.main-select-wrap .main-myproject {
+    display:inline-block;
+    float:right;
+    margin-right: 110px;
+}
+
+
+
+
+
+.main-tabs-wrap .nav-tabs {border:0;}
+.main-tabs-wrap .nav-tabs>li {margin-bottom:0;}
+.main-tabs-wrap .nav>li>a {padding: 7px 9px;}
+.main-tabs-wrap .nav-tabs>li>a {margin: 0;}
+.main-contents-wrap .nav-tabs{
+    background-color: #ebf0f3;
+    border-bottom: 0 !important;
+}
+.main-contents-wrap .nav-tabs>li>a{
+    color: rgba(0, 0, 0, 0.20);
+    border:0 !important;
+}
+
+.main-contents-wrap .tab-content{
+    padding:0 15px; 
+}
+
+.main-contents-wrap .table-hover.tbl-list >tbody>tr:hover>td, 
+.main-contents-wrap .table-hover.tbl-list >tbody>tr:hover>th,
+.main-contents-wrap .ultable li:active,
+.main-contents-wrap .ultable li:hover{
+    background-color:#f5f7f8;
+}
+
+.tab-content .tbl-board .table.tbl-list th {
+    border-bottom: 0;
+    border-top: 2px solid #4c67b0 !important;
+}
+
+.main-contents-wrap .nav-tabs>li>a:hover{
+    border-color:transparent;
+    opacity: 8;
+}
+
+.main-contents-wrap .nav>li>a:focus, 
+.main-contents-wrap .nav>li>a:hover  {
+    background-color:transparent;
+    color:rgba(136,151,168,1);
+}
+.main-contents-wrap .nav-tabs>li.active>a, 
+.main-contents-wrap .nav-tabs>li.active>a:focus, 
+.main-contents-wrap .nav-tabs>li.active>a:hover{
+    color: #fff;
+    background-color: #EA5687;
+    border: 0;
+}
+
+.main-contents-wrap .main-tabs-wrap {
+    position:relative;
+}
+
+.main-contents-wrap table th {text-align: center;}
+
+.main-tabs-wrap .main-select-wrap {
+    padding: 15px 0;
+}
+.main-tabs-wrap .main-nav-wrap {
+    float:right;
+    position: absolute;
+    top: 11px;
+    right: 15px;
+}
+.main-tabs-wrap ul i {
+    font-size: 1.2em;
+    padding: 3px;
+}
+.main-tabs-wrap .main-search {
+    position: absolute;
+    right: 23px;
+    top: .85em;
+}
+.main-search .main-search-form {
+    display:inline-block;
+}
+.main-search .main-search-form input {
+    width: 150px; height: 34px;
+    background-color: #fff;
+    border: 1px solid #bbc2cb;
+    border-radius: 3px;
+}
+.main-search .main-search-btn {
+    display:inline-block;
+}
+.main-search-btn .search-btn {
+    background-color: #4773AA;
+    display: inline-block;
+    padding: .5em .7em;
+    border-radius: 5px;
+    text-align:center;
+    color: #fff;
+}
+
+
+
+
+
+/*진행상태 버튼*/
+.project-board td.project-status span{
+    width: 54px;
+    height: 24px;
+    color: #fff;
+    display:inline-block;
+    padding-top: 2px;
+    font-size: 12px;
+    text-align: center;
+}
+/* 영업 */
+.project-color1 {background-color:#EA5687;}
+/* 진행중 */
+.project-color2 {background-color:#317dd3;}
+/* 착수 */
+.project-color3 {background-color:#31BB9A;}
+/* 종료 */
+.project-color4 {background-color:#a7a7a7;}
+/* 취소 */
+.project-color5 {background-color:#ffd800;}
+/* 프로젝트 테이블 */
+.project-board table td {
+    height: 48px;
+    font-size: 16px;
+    color: #112e51 !important;
+}
+
+.project-board table tr th {
+    font-size: 14px !important;
+    color: #4773aa !important;
+    height: 45px;
+}
+.tbl-board .table.tbl-list{
+    border-bottom:1px solid #e0e0e0;
+}
+
+
+/**/
+/* 프로젝트 테이블 */
+.project-alret{
+    display:block;
+    clear:both;
+    margin:9px 0;
+}
+.project-alret:after{
+    display:block;
+    clear:both;
+    content:" ";
+}
+@media (max-width:768px) {
+    .project-alret {
+        margin: 6px 0;
+    }
+}
+.project-status {
+    margin-top:8px; 
+    color:#999;
+    font-size:11px;
+    font-family:"돋움",Dotum;
+}
+.project-status li{
+    float:left;
+    display:inline-block;
+    margin-left:12px;
+}
+.project-status li span{
+    display:inline-block;
+    margin-bottom:-2px;
+    width:8px;
+    height:13px;
+}
+@media(max-width:489px){
+    .project-alret .fl{float:none;}
+    .project-alret .fr{float:none;}
+}
+.main-wrap .table .option {width:55px !important; letter-spacing:-1px;}
+.main-wrap .table .data{font-weight:normal;}
+.project-count{
+    font-size:11px;
+}
+.table.tbl-graph > thead > tr > th{
+    vertical-align:middle;
+    padding:2px;
+    text-align:center;
+    border-bottom:1px;
+    border-color:#c4d5dd #cfdee9;
+    width:6%;
+    color:#213a7a;
+}
+.table.tbl-graph > thead > tr > th.month {
+    background-color:#dae7f0;
+}
+.main-wrap .tbl-graph .project-name {
+    border-right:1px solid #c4d5dd;
+    text-align:center;
+}
+.main-wrap .table.tbl-graph > tbody > tr > td.project-name {
+    border-right:1px solid #cfdee9;
+    font-weight:bold;
+    background-color:#f9f9f9;
+    padding-left:5px;
+    padding-right:5px;
+}
+.main-wrap .table.tbl-graph > tbody > tr > td {
+    border-color:#c4d5dd #f1f1f1;
+    padding: 4px 0;
+    vertical-align:middle;
+}
+.main-wrap .table.tbl-graph > tbody > tr > td > p{
+    display:block;
+    min-height:12px;
+    content:" ";
+}
+.main-wrap .alert {margin-top: 0;}
+.main-wrap .col-sm-3 {padding: 0 5px 0 0;}
+.main-wrap .col-sm-9 {padding: 0 0 0 5px;}
+
+
+.container-wrap .main-top-search {
+    display:none;
+}
+
+
+@media(min-width: 993px) {
+    .main-search-area {display: none !important;}
+}
+
+@media (max-width: 992px) {
+    /*.main-notice-wrap {
+        margin-top: 46px;
+    }*/
+    .nav-side-wrap .toggle-btn {cursor: pointer; margin-top: -2px;}
+    .nav-side-wrap .toggle-btn:after {
+        content: "IBsystem";
+        margin-left: 10px;
+        font-family: 맑은고딕;
+        font-weight: 600;
+        letter-spacing: -1px;
+    }
+    .main-tlt-wrap {text-align:center !important;}
+    .main-tlt-wrap .main-tlt {float:none;}
+    .main-tlt-wrap .fr {display: none;}
+
+    .main-search-area {
+        position: absolute;
+        width: 100%;
+        top: 56px;
+        float: right;
+        height: auto;
+    }
+    .main-search-area div.well {
+        width: 50%;
+        min-height: 50px;
+        background-color: rgba(46, 78, 119, 0.87);
+        float: Right;
+        border: none;
+    }
+    .nav-side-wrap {z-index: unset;}
+}
+
+@media (max-width: 768px) {
+    .footer {display:none;}
+    .main-notice-wrap .notice-date {display:none;}
+    .main-notice-wrap .notice-content {padding-left: 25px;}
+}
+
+
+@media (max-width: 480px) {
+    .main-wrap .col-sm-3 {padding: 0 0 0 0;}
+    .main-wrap .col-sm-9 {padding: 0 0 0 0;}
+    .main-tlt-wrap .fr {width: 100%;}
+    .main-select-wrap .main-myproject {
+        float:right; margin-right: 15px;
+    }
+    .footer .container {
+        min-height: 150px; 
+    }
+    .main-tlt h2 {
+        margin-top: 2px;
+        font-size: 20px;
+    }
+    .main-search-area div.well {width:100%;}
+    .main-tabs-wrap .main-select-wrap {
+        padding: 15px 0 5p 0;
+    }
+    .main-tabs-wrap .main-nav-wrap {
+        float: none;
+        position: relative;
+        margin-left: 30px;
+        margin-bottom: 11px;
+    }
+    .nav-tabs>li {width: 50%; text-align:center;}
+    .main-nav-wrap .main-project-list i:after {
+        content: "목록";
+        font-size: 1.4rem;
+        vertical-align: top;
+        padding-left: 3px;
+    }
+    .main-nav-wrap .main-project-graph i:after {
+        content: "그래프";
+        font-size: 1.4rem;
+        vertical-align: top;
+        padding-left: 3px;
+    }
+}
+@media (max-width: 320px) {
+    .main-tlt h2 {
+        font-size: 18px;
+        margin-top: 4px;
+    }
+}
