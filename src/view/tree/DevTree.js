@@ -178,22 +178,6 @@ class Home extends Component {
 
     this.setState({ columns: keys });
     this.setState({ customerData: data });
-    
-
-    // let senchaModel = keys.map((item) => {
-    //   const model = {
-    //     name: item,
-    //     type: dataType[item],
-    //   };
-    //   return model;
-    // });
-    // let senchaModelNameRandom =
-    //   "SenchaModel" + (Math.random() + 1).toString(36).substring(7);
-
-    // Ext.define(senchaModelNameRandom, {
-    //   extend: "Ext.data.Model",
-    //   fields: senchaModel,
-    // });
 
     let sort = [];
 
@@ -209,21 +193,6 @@ class Home extends Component {
         }
       });
     }
-
-    // this.store = Ext.create("Ext.data.Store", {
-    //   model: senchaModelNameRandom,
-    //   data: data,
-    //   sorters: sort,
-    //   filters: [],
-    // });
-
-    // if (type === "filter") {
-    //   let _filters = this.store.getFilters();
-
-    //   filterData.forEach((itemFilter) => {
-    //     _filters.add((item) => this.getFilters(item, itemFilter));
-    //   });
-    // }
   };
 
   convertFormartArray = (
@@ -235,20 +204,6 @@ class Home extends Component {
   ) => {
     let keys = Object.keys(parseData[0]);
     this.setState({ columns: keys });
-    // let senchaModel = keys.map((item) => {
-    //   const model = {
-    //     name: item,
-    //     type: dataType[item],
-    //   };
-    //   return model;
-    // });
-    // let senchaModelNameRandom =
-    //   "SenchaModel" + (Math.random() + 1).toString(36).substring(7);
-
-    // Ext.define(senchaModelNameRandom, {
-    //   extend: "Ext.data.Model",
-    //   fields: senchaModel,
-    // });
     let sort = [];
 
     if (type === "sort") {
@@ -263,20 +218,6 @@ class Home extends Component {
         }
       });
     }
-
-    // this.store = Ext.create("Ext.data.Store", {
-    //   data: parseData,
-    //   sorters: sort,
-    //   filters: [],
-    // });
-
-    // if (type === "filter") {
-    //   let _filters = this.store.getFilters();
-
-    //   filterData.forEach((itemFilter) => {
-    //     _filters.add((item) => this.getFilters(item, itemFilter));
-    //   });
-    // }
   };
 
   getFilters = (item, itemFilter) => {
@@ -358,7 +299,6 @@ class Home extends Component {
   }
 
   formatDateFromMilliseconds(milliseconds) {
-    //return moment(milliseconds).zone("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
     return moment(milliseconds).utcOffset("+0900").format("YYYY-MM-DD HH:mm:ss.SSS");
 
   }
@@ -509,13 +449,8 @@ class Home extends Component {
   }
 
   scrollData = () => {
-    // this.setState({ customerData: [] });
     let data = JSON.parse(this.state.dataSource);
     let position = data.scroll;
-    // let pos1 = Object.values(position[0])[0];
-    // let pos2 = Object.values(position[1])[0];
-    // data = this.state.dataLoading.slice(pos1, pos2);
-    // this.convertData(data);
     
     position.forEach((item, i) => {
       setTimeout(() => {
@@ -816,7 +751,7 @@ class Home extends Component {
                         alt=""
                       />
                     </button>
-                    <span>데이타 그리드 테스트 (외주계약목록조회)</span>
+                    <span>트리 그리드 테스트 (외주계약목록조회)</span>
                   </div>
                   <div className={styles.group_config}>
                     <div className={styles.config_top}>
@@ -958,7 +893,7 @@ class Home extends Component {
                         <Grouping autoExpandAll={false} />
                         <Selection mode="single" />
                         {this.state.columns.map((item, index) => (
-                          item == this.state.groupBy ? (
+                          item === this.state.groupBy ? (
                           <Column
                             key={index + item}
                             dataField={item}
