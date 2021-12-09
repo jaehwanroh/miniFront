@@ -871,7 +871,7 @@ class Home extends Component {
                       <input
                         type="checkbox"
                         name="checkComponet"
-                        checked={false}
+                        defaultChecked={false}
                       />
                       </Link>
                       <label htmlFor="checkDev"> DevExtreme</label>
@@ -879,7 +879,7 @@ class Home extends Component {
                       <input
                         type="checkbox"
                         name="checkComponet"
-                        checked={false}
+                        defaultChecked={false}
                       />
                       </Link>
                       <label htmlFor="checkSencha"> Sencha</label>
@@ -887,7 +887,7 @@ class Home extends Component {
                       <input
                         type="checkbox"
                         name="checkComponet"
-                        checked={true}
+                        defaultChecked={true}
                       />
                       </Link>
                       <label htmlFor="chekWijmo"> Wijmo</label>

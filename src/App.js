@@ -12,9 +12,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 class App extends Component{
 
-  constructor(){
-    super()
-  }
+  // constructor(){
+  //   super()
+  // }
 
   render(){
     return(
