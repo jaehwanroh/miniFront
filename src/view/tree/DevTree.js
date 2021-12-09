@@ -2,7 +2,7 @@ import React, { Component, Profiler } from "react";
 import styles from "../home/assert/home.module.scss";
 import { IsJsonString, styleCombine } from "../../common/helper";
 import MasterLayout from "../layout/MasterLayout";
-import { DataGrid, Column, Selection } from "devextreme-react/data-grid";
+import DataGrid, { Column, Selection, Summary, GroupItem, Grouping, SortByGroupSummaryInfo } from 'devextreme-react/data-grid';
 import "devextreme/data/odata/store";
 import { LoadPanel } from 'devextreme-react/load-panel';
 import "@grapecity/wijmo.styles/wijmo.css";
@@ -23,7 +23,7 @@ class Home extends Component {
     super(props);
     this.state = {
       customerData: []
-      , dataSource:'{"systemCode":"DSP","title":"","serviceURL":"http://dspdevpi.poscoenc.com/Services/DSP/WebServices/AF_Payment.asmx","method":"GetPaymentHistoryList","parameter":",,,\\"2020-01-01\\",\\"2021-10-30\\",,,,,,,\\"1\\"","userId":"S10332","tableIndex":0,"dataUrl":"http://poc.poscoenc.com:8084/DSP_0b1b649b-7cb0-e283-7c81-aba0e8f881c6.json","sortBy":[{"RowNo":"asc"}],"scroll":[{"position":10},{"position":20}],"filterBy":[{"column":"RowNo","expr":"<100"}],"columns":[{"colname":"RowNo","caption":"순번","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"RowNo","alignment":"center"},{"colname":"PjtCode","caption":"프로젝트코드","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PjtCode","alignment":"center"},{"colname":"CtrtNo","caption":"계약번호","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtNo","alignment":"center"},{"colname":"PfmContTypeCode","caption":"프로젝트명","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PfmContTypeCode","alignment":"center"},{"colname":"OrdrNo","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"OrdrNo"},{"colname":"PaymtSeqNo","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtSeqNo"},{"colname":"ChgSeq","caption":"차수","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ChgSeq"},{"colname":"VrfDate","caption":"","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"VrfDate","alignment":"center"},{"colname":"CtrtName","caption":"계약건명","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtName"},{"colname":"VndrCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"VndrCode","alignment":"center"},{"colname":"VndrName","caption":"계약업체","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"VndrName"},{"colname":"PaymtCurCode","caption":"통화","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtCurCode","alignment":"center"},{"colname":"VrfAmt","caption":"검수금액","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"VrfAmt"},{"colname":"PaymtSchdDate","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtSchdDate","alignment":"center"},{"colname":"SetlDate","caption":"품의일자","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"SetlDate","alignment":"center"},{"colname":"InvoiceAprvDate","caption":"전표승인일","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"InvoiceAprvDate","alignment":"center"},{"colname":"TaxBillIssueDate","caption":"계산서발행일","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"TaxBillIssueDate","alignment":"center"},{"colname":"PaymtDate","caption":"실지급일","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtDate","alignment":"center"},{"colname":"RealPaymtAmt","caption":"실지급액","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"RealPaymtAmt"},{"colname":"InvoiceNo","caption":"전표번호","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"InvoiceNo","alignment":"center"},{"colname":"ProgStusCode","caption":"진행상태","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ProgStusCode","alignment":"center"},{"colname":"ProgStusName","caption":"진행상태","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ProgStusName","alignment":"center"},{"colname":"InvoiceProgStusCode","caption":"ERP상태","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"InvoiceProgStusCode","alignment":"center"},{"colname":"PjtName","caption":"프로젝트명","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PjtName"},{"colname":"PaymtTypeCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtTypeCode","alignment":"center"},{"colname":"PaymtTypeName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtTypeName","alignment":"center"},{"colname":"PaymtGubun","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtGubun","alignment":"center"},{"colname":"CtrtSeqNo","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtSeqNo"},{"colname":"CtrtCurCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtCurCode","alignment":"center"},{"colname":"FIssueYN","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"FIssueYN","alignment":"center"},{"colname":"TaxBillDocuNo","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"TaxBillDocuNo"},{"colname":"Dti_No","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"Dti_No"},{"colname":"JobFuncDvsCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"JobFuncDvsCode","alignment":"center"},{"colname":"CoSclCodeName","caption":"업체구분","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CoSclCodeName"},{"colname":"LegalPaymtDeadlineDate","caption":"지급기한","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"LegalPaymtDeadlineDate","alignment":"center"},{"colname":"DueDate","caption":"법정지급기한","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"DueDate","alignment":"center"},{"colname":"DiffDueDate","caption":"경과일수","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"DiffDueDate"},{"colname":"ComPaymtDateYn","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ComPaymtDateYn","alignment":"center"},{"colname":"CtrtChgrEmplIDName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtChgrEmplIDName","alignment":"center"},{"colname":"PaymtChgrEmplIDName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtChgrEmplIDName","alignment":"center"},{"colname":"VerifierEmplIDName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"VerifierEmplIDName","alignment":"center"},{"colname":"CtrtMigTypeCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtMigTypeCode","alignment":"center"},{"colname":"PrePaymtSetlStus","caption":"대금조기집행품의서","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PrePaymtSetlStus","alignment":"center"},{"colname":"PrePaymtSetlFileAppdPssblYN","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PrePaymtSetlFileAppdPssblYN","alignment":"center"}]}'   
+      , dataSource:'{"systemCode":"DSP","title":"","serviceURL":"http://dspdevpi.poscoenc.com/Services/DSP/WebServices/AF_Payment.asmx","method":"GetPaymentHistoryList","parameter":",,,\\"2020-01-01\\",\\"2021-10-30\\",,,,,,,\\"1\\"","userId":"S10332","tableIndex":0,"dataUrl":"http://poc.poscoenc.com:8084/DSP_0b1b649b-7cb0-e283-7c81-aba0e8f881c6.json","sortBy":[{"RowNo":"asc"}], "groupBy":["PjtCode"],"scroll":[{"position":10},{"position":20}],"filterBy":[{"column":"RowNo","expr":"<100"}],"columns":[{"colname":"RowNo","caption":"순번","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"RowNo","alignment":"center"},{"colname":"PjtCode","caption":"프로젝트코드","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PjtCode","alignment":"center"},{"colname":"CtrtNo","caption":"계약번호","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtNo","alignment":"center"},{"colname":"PfmContTypeCode","caption":"프로젝트명","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PfmContTypeCode","alignment":"center"},{"colname":"OrdrNo","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"OrdrNo"},{"colname":"PaymtSeqNo","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtSeqNo"},{"colname":"ChgSeq","caption":"차수","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ChgSeq"},{"colname":"VrfDate","caption":"","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"VrfDate","alignment":"center"},{"colname":"CtrtName","caption":"계약건명","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtName"},{"colname":"VndrCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"VndrCode","alignment":"center"},{"colname":"VndrName","caption":"계약업체","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"VndrName"},{"colname":"PaymtCurCode","caption":"통화","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtCurCode","alignment":"center"},{"colname":"VrfAmt","caption":"검수금액","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"VrfAmt"},{"colname":"PaymtSchdDate","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtSchdDate","alignment":"center"},{"colname":"SetlDate","caption":"품의일자","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"SetlDate","alignment":"center"},{"colname":"InvoiceAprvDate","caption":"전표승인일","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"InvoiceAprvDate","alignment":"center"},{"colname":"TaxBillIssueDate","caption":"계산서발행일","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"TaxBillIssueDate","alignment":"center"},{"colname":"PaymtDate","caption":"실지급일","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtDate","alignment":"center"},{"colname":"RealPaymtAmt","caption":"실지급액","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"RealPaymtAmt"},{"colname":"InvoiceNo","caption":"전표번호","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"InvoiceNo","alignment":"center"},{"colname":"ProgStusCode","caption":"진행상태","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ProgStusCode","alignment":"center"},{"colname":"ProgStusName","caption":"진행상태","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ProgStusName","alignment":"center"},{"colname":"InvoiceProgStusCode","caption":"ERP상태","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"InvoiceProgStusCode","alignment":"center"},{"colname":"PjtName","caption":"프로젝트명","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PjtName"},{"colname":"PaymtTypeCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtTypeCode","alignment":"center"},{"colname":"PaymtTypeName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtTypeName","alignment":"center"},{"colname":"PaymtGubun","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtGubun","alignment":"center"},{"colname":"CtrtSeqNo","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtSeqNo"},{"colname":"CtrtCurCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtCurCode","alignment":"center"},{"colname":"FIssueYN","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"FIssueYN","alignment":"center"},{"colname":"TaxBillDocuNo","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"TaxBillDocuNo"},{"colname":"Dti_No","caption":"","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"Dti_No"},{"colname":"JobFuncDvsCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"JobFuncDvsCode","alignment":"center"},{"colname":"CoSclCodeName","caption":"업체구분","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CoSclCodeName"},{"colname":"LegalPaymtDeadlineDate","caption":"지급기한","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"LegalPaymtDeadlineDate","alignment":"center"},{"colname":"DueDate","caption":"법정지급기한","datatype":"date","readonly":false,"format":"","halign":"","visible":true,"dataField":"DueDate","alignment":"center"},{"colname":"DiffDueDate","caption":"경과일수","datatype":"number","readonly":false,"format":"","halign":"","visible":true,"dataField":"DiffDueDate"},{"colname":"ComPaymtDateYn","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"ComPaymtDateYn","alignment":"center"},{"colname":"CtrtChgrEmplIDName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtChgrEmplIDName","alignment":"center"},{"colname":"PaymtChgrEmplIDName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PaymtChgrEmplIDName","alignment":"center"},{"colname":"VerifierEmplIDName","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"VerifierEmplIDName","alignment":"center"},{"colname":"CtrtMigTypeCode","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"CtrtMigTypeCode","alignment":"center"},{"colname":"PrePaymtSetlStus","caption":"대금조기집행품의서","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PrePaymtSetlStus","alignment":"center"},{"colname":"PrePaymtSetlFileAppdPssblYN","caption":"","datatype":"string","readonly":false,"format":"","halign":"","visible":true,"dataField":"PrePaymtSetlFileAppdPssblYN","alignment":"center"}]}'   
       , dataLoading: null
       , columns: []
       , isShowMenu: false
@@ -56,6 +56,7 @@ class Home extends Component {
       , isDev: true
       , isSencha: false
       , isWijmo: false
+      , groupBy:[]
     };
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
     this.onFocusedRowChanged = this.onFocusedRowChanged.bind(this);
@@ -77,8 +78,6 @@ class Home extends Component {
     this.setState({ isClearLog: false });
     this.setState({
       isRenderExt: true
-      // isRenderSencha: true,
-      , isRenderWismo: true
     });
 
     let parseData = IsJsonString(this.state.dataSource)
@@ -95,8 +94,6 @@ class Home extends Component {
     this.setState({ columns: [] });
     this.setState({
       isRenderExt: true
-      // isRenderSencha: true,
-      , isRenderWismo: true
       , type: "rendering"
     });
     this.convertData(this.state.dataLoading);
@@ -110,6 +107,9 @@ class Home extends Component {
   ) => {
     let dataType = this.getDataType(parseData);
     this.setState({ customerData: parseData });
+    if(parseData.groupBy !== undefined){
+      this.setState({ groupBy: parseData.groupBy[0] });
+    }
     if (Array.isArray(parseData)) {
       if (!parseData.length) {
         this.setState({ columns: [] });
@@ -178,6 +178,7 @@ class Home extends Component {
 
     this.setState({ columns: keys });
     this.setState({ customerData: data });
+    
 
     // let senchaModel = keys.map((item) => {
     //   const model = {
@@ -353,17 +354,17 @@ class Home extends Component {
   };
 
   formatTrialNo() {
-    return moment().zone("+0900").format("YYYYMMDDHHmmss");
+    return moment().utcOffset("+0900").format("YYYYMMDDHHmmss");
   }
 
   formatDateFromMilliseconds(milliseconds) {
     //return moment(milliseconds).zone("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
-    return moment(milliseconds).zone("+0900").format("YYYY-MM-DD HH:mm:ss.SSS");
+    return moment(milliseconds).utcOffset("+0900").format("YYYY-MM-DD HH:mm:ss.SSS");
 
   }
 
   formatCreateTime() {
-    return moment().zone("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
+    return moment().utcOffset("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
   }
 
   callbackSencha = (id, phase, actualTime, baseTime, startTime, commitTime) => {
@@ -714,18 +715,22 @@ class Home extends Component {
                   className={styles.list_item}
                 >
                   <List component="div" disablePadding>
-                    <ListItemButton>
-                      <ListItemText
-                        className={styles.description_bottom}
-                        primary="데이타그리드 렌더링"
-                      />
-                    </ListItemButton>
-                    <ListItemButton>
-                      <ListItemText
-                        className={styles.description_bottom}
-                        primary="트리그리드 렌더링"
-                      />
-                    </ListItemButton>
+                    <Link to="/DevGrid" style={{ textDecoration: 'none', color: 'white' }}>
+                      <ListItemButton>
+                        <ListItemText
+                          className={styles.description_bottom}
+                          primary="데이타그리드 렌더링"
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to="/DevTree" style={{ textDecoration: 'none', color: 'white' }}>
+                      <ListItemButton>
+                        <ListItemText
+                          className={styles.description_bottom}
+                          primary="트리그리드 렌더링"
+                        />
+                      </ListItemButton>
+                    </Link>
                     <ListItemButton>
                       <ListItemText
                         className={styles.description_bottom}
@@ -825,20 +830,20 @@ class Home extends Component {
                         className={styles.btn_rendering}
                         onClick={this.bindingData}
                       >
-                        최초렌더링
+                        바인딩
                       </button>
                       <button
                         onClick={this.sortData}
                         className={styles.btn_sort}
                       >
-                        정렬
+                        집계
                       </button>
-                      <button
+                      {/* <button
                         onClick={this.applyFilter}
                         className={styles.btn_filter}
                       >
                         필터링
-                      </button>
+                      </button> */}
                       <button
                         className={styles.btn_scroll}
                         onClick={this.scrollData}
@@ -912,7 +917,7 @@ class Home extends Component {
                     </div>
                   </div>
                   <div className={styles.title_devextreme}>
-                    <span>{"<데이타그리드/트리그리드>(DevExtreme)"}</span>
+                    <span>{"<트리그리드>(DevExtreme)"}</span>
                   </div>
                   {this.state.customerData &&
                   this.state.customerData.length &&
@@ -932,6 +937,7 @@ class Home extends Component {
                       />
                       <DataGrid
                         id = "dataGrid"
+                        rootValue={-1}
                         className={styles.devextreme_custom}
                         dataSource={this.state.customerData}
                         showBorders={true}
@@ -941,14 +947,18 @@ class Home extends Component {
                         showColumnLines={true}
                         showRowLines={true}
                         columnAutoWidth={true}
-                        keyExpr="RowNo"
+                        keyExpr="PjtCode"
+                        parentIdExpr="CtrtNo"
                         hoverStateEnabled={true}
                         onSelectionChanged={this.onSelectionChanged}
                         focusedRowKey={this.state.focusedRowKey}
                         onFocusedRowChanged={this.onFocusedRowChanged}
                         onCellPrepared={this.onCellPrepared}
                       >
+                        <Grouping autoExpandAll={false} />
+                        <Selection mode="single" />
                         {this.state.columns.map((item, index) => (
+                          item == this.state.groupBy ? (
                           <Column
                             key={index + item}
                             dataField={item}
@@ -956,14 +966,38 @@ class Home extends Component {
                             sortOrder={this.checkSort(item)}
                             filterOperations={this.state.filterOperations}
                             filterType={this.state.filterType}
-                            selectedFilterOperation={this.getSelectedOperation(
-                              item
-                            )}
+                            selectedFilterOperation={this.getSelectedOperation( item )}
+                            groupIndex={0}
                             alignment={this.state.alignment[0][item]}
                             filterValue={this.getFilterValues(item)}
-                          />
+                          />)
+                          : (
+                            <Column
+                            key={index + item}
+                            dataField={item}
+                            dataType={this.state.dataType[item]}
+                            sortOrder={this.checkSort(item)}
+                            filterOperations={this.state.filterOperations}
+                            filterType={this.state.filterType}
+                            selectedFilterOperation={this.getSelectedOperation( item )}
+                            alignment={this.state.alignment[0][item]}
+                            filterValue={this.getFilterValues(item)}
+                          />)
                         ))}
-                        <Selection mode="single" />
+                        <Summary>
+                          {this.state.columns.map((item, index) => (
+                            item.includes('Amt') ? (
+                            <GroupItem
+                              key={index + item}
+                              column={item}
+                              summaryType="sum"
+                              valueFormat="fixedPoint"
+                              displayFormat="{0}"
+                              showInGroupFooter={true} 
+                            />)
+                            : ""
+                          ))}
+                        </Summary>
                       </DataGrid>
                     </Profiler>
                   ) : (

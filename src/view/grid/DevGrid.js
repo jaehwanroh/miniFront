@@ -353,17 +353,17 @@ class Home extends Component {
   };
 
   formatTrialNo() {
-    return moment().zone("+0900").format("YYYYMMDDHHmmss");
+    return moment().utcOffset("+0900").format("YYYYMMDDHHmmss");
   }
 
   formatDateFromMilliseconds(milliseconds) {
     //return moment(milliseconds).zone("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
-    return moment(milliseconds).zone("+0900").format("YYYY-MM-DD HH:mm:ss.SSS");
+    return moment(milliseconds).utcOffset("+0900").format("YYYY-MM-DD HH:mm:ss.SSS");
 
   }
 
   formatCreateTime() {
-    return moment().zone("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
+    return moment().utcOffset("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
   }
 
   callbackSencha = (id, phase, actualTime, baseTime, startTime, commitTime) => {
@@ -714,18 +714,22 @@ class Home extends Component {
                   className={styles.list_item}
                 >
                   <List component="div" disablePadding>
-                    <ListItemButton>
-                      <ListItemText
-                        className={styles.description_bottom}
-                        primary="데이타그리드 렌더링"
-                      />
-                    </ListItemButton>
-                    <ListItemButton>
-                      <ListItemText
-                        className={styles.description_bottom}
-                        primary="트리그리드 렌더링"
-                      />
-                    </ListItemButton>
+                    <Link to="/DevGrid" style={{ textDecoration: 'none', color: 'white' }}>
+                      <ListItemButton>
+                        <ListItemText
+                          className={styles.description_bottom}
+                          primary="데이타그리드 렌더링"
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to="/DevTree" style={{ textDecoration: 'none', color: 'white' }}>
+                      <ListItemButton>
+                        <ListItemText
+                          className={styles.description_bottom}
+                          primary="트리그리드 렌더링"
+                        />
+                      </ListItemButton>
+                    </Link>
                     <ListItemButton>
                       <ListItemText
                         className={styles.description_bottom}
@@ -912,7 +916,7 @@ class Home extends Component {
                     </div>
                   </div>
                   <div className={styles.title_devextreme}>
-                    <span>{"<데이타그리드/트리그리드>(DevExtreme)"}</span>
+                    <span>{"<데이타그리드>(DevExtreme)"}</span>
                   </div>
                   {this.state.customerData &&
                   this.state.customerData.length &&

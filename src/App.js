@@ -7,6 +7,7 @@ import Home from './view/home/Home';
 import DevGrid from './view/grid/DevGrid';
 import SenchaGrid from './view/grid/SenchaGrid';
 import WijmoGrid from './view/grid/WijmoGrid';
+import DevTree from './view/tree/DevTree';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ class App extends Component{
             <Route path="/DevGrid" element={<DevGrid/>} />
             <Route path="/SenchaGrid" element={<SenchaGrid/>} />
             <Route path="/WijmoGrid" element={<WijmoGrid/>} />
+            <Route path="/DevTree" element={<DevTree/>} />
           </Routes>
         </BrowserRouter>
       </div>
