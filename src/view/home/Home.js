@@ -108,7 +108,7 @@ class Home extends Component {
       isRenderExt: true
       // isRenderSencha: true,
       , isRenderWismo: true
-      , type: "binding"
+      , type: "rendering"
     });
     this.convertData(this.state.dataLoading);
   };
@@ -699,30 +699,6 @@ class Home extends Component {
     });
   }
 
-  onChangeComponent(component){
-
-    const checkboxes = document.getElementsByName("checkComponet");
-  
-    for(var i=0; i<checkboxes.length; i++){
-      if(checkboxes[i] !== component){
-        checkboxes[i].checked = false;
-      }
-      else{
-        checkboxes[i].checked = true;
-      }
-    }
-
-    if(component === 'dev'){
-      this.setState({ isDev: true, isSencha: false, isWijmo: false });
-    }
-    else if(component === 'sencha'){
-      this.setState({ isDev: false, isSencha: true, isWijmo: false });
-    }
-    else{
-      this.setState({ isDev: false, isSencha: false, isWijmo: true });
-    }
-  }
-
   render() {
     return (
       <MasterLayout>
@@ -901,27 +877,24 @@ class Home extends Component {
                         <input
                           type="checkbox"
                           name="checkComponet"
-                          checked={true}
-                          onChange={() => this.onChangeComponent("dev")}
+                          defaultChecked={true}
                         />
                       </Link>
                       <label htmlFor="checkDev">DevExtreme</label>
                       <Link to="/SenchaGrid"> 
-                      <input
-                        type="checkbox"
-                        name="checkComponet"
-                        checked={false}
-                        onChange={() => this.onChangeComponent("sencha")}
-                      />
+                        <input
+                          type="checkbox"
+                          name="checkComponet"
+                          defaultChecked={false}
+                        />
                       </Link>
                       <label htmlFor="checkSencha">Sencha</label>
                       <Link to="/WijmoGrid"> 
-                      <input
-                        type="checkbox"
-                        name="checkComponet"
-                        checked={false}
-                        onChange={() => this.onChangeComponent("wijmo")}
-                      />
+                        <input
+                          type="checkbox"
+                          name="checkComponet"
+                          defaultChecked={false}
+                        />
                       </Link>
                       <label htmlFor="chekWijmo">Wijmo</label>
                     </div>
