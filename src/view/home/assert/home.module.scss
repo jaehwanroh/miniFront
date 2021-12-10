@@ -326,61 +326,16 @@
             text-align: center;
           }
           .devextreme_custom {
-            height: 560px;
-            width: 96.7%;
+            height: 100%;
+            width: 100%;
+          }
+          .gridbox {
+            height: 590px;
+            width: 94%;
             overflow: auto;
             padding: 15px;
             margin: 0 20px;
             border: 1px solid #000;
-            .dx-datagrid-headers{
-              background:#f6f6f9;
-              font-weight:bold;
-              color:#333333;
-              border-top:2px solid #00588a;
-              border-bottom:0;
-              border-right:0;
-              border-left:0;
-            }
-            .dx-datagrid-rowsview{
-              border-left:0;
-              border-right:0;  
-            }
-            
-            // table {
-            //   display: block;
-            //   white-space: nowrap;
-            //   tr {
-            //     background:#f6f6f9;
-            //     font-weight:bold;
-	          //     color:#333333;
-            //     border-top:2px solid #00588a;
-            //     border-bottom:0;
-            //     border-right:0;
-            //     border-left:0;
-            //     text-align: center;
-            //     td {
-            //       width: 300px;
-            //       display: inline-flex;
-            //       padding: 3px;
-            //       justify-content: center;
-            //     }
-            //   }
-            // }
-          }
-
-          .wismo_custom {
-            height: 560px;
-            width: 96.7%;
-            overflow: auto;
-            padding: 15px;
-            margin: 0 20px;
-            border: 1px solid #000;
-            border-radius: 0%;
-          }
-
-          #hoverRow .wj-cells .wj-row:hover .wj-cell:not(.wj-state-selected):not(.wj-state-multi-selected) {
-            transition: all 0.5s;
-            background: rgb(200,255,200);
           }
         }
       }
