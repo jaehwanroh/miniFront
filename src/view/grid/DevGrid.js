@@ -377,22 +377,23 @@ class Home extends Component {
 
   resetData = () => {
     this.setState({
-      customerData: [],
-      dataLoading: null,
-      columns: [],
-      isShowMenu: false,
-      logTimeData: [],
-      menu1: false,
-      menu2: false,
-      isClearLog: false,
-      isRenderExt: false,
-      isRenderSencha: false,
-      isRenderWismo: false,
-      type: "binding",
-      sequenceExt: 0,
-      sequenceSencha: 0,
-      sequenceWismo: 0,
-      sequenceLoading: 0,
+      customerData: []
+      , dataLoading: null
+      , columns: []
+      , isShowMenu: false
+      , logTimeData: []
+      , menu1: false
+      , menu2: false
+      , isClearLog: false
+      , isRenderExt: false
+      , isRenderSencha: false
+      , isRenderWismo: false
+      , type: "binding"
+      , sequenceExt: 0
+      , sequenceSencha: 0
+      , sequenceWismo: 0
+      , sequenceLoading: 0
+      , title: ''
     });
   };
 
