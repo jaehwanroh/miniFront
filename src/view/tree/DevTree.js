@@ -59,6 +59,7 @@ class Home extends Component {
       , groupIndex: 0
       , groupBy:''
       , title: ''
+      , grid: []
     };
     this.devTreeGrid = React.createRef();
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
@@ -96,6 +97,7 @@ class Home extends Component {
   };
 
   bindingData = () => {
+    this.devTreeGrid.current.instance.state(null);
     this.setState({ customerData: [] });
     this.setState({ columns: [] });
     this.setState({ groupBy: ''})
@@ -108,7 +110,6 @@ class Home extends Component {
     ? JSON.parse(this.state.dataSource)
     : [];
     this.setState({groupBy: parseData.groupBy[0]})
-    this.devTreeGrid.current.instance.refresh();
     this.convertData(this.state.dataLoading);
   };
 
@@ -191,52 +192,6 @@ class Home extends Component {
 
     this.setState({ columns: keys });
     this.setState({ customerData: data });
-    
-
-    // let senchaModel = keys.map((item) => {
-    //   const model = {
-    //     name: item,
-    //     type: dataType[item],
-    //   };
-    //   return model;
-    // });
-    // let senchaModelNameRandom =
-    //   "SenchaModel" + (Math.random() + 1).toString(36).substring(7);
-
-    // Ext.define(senchaModelNameRandom, {
-    //   extend: "Ext.data.Model",
-    //   fields: senchaModel,
-    // });
-
-    let sort = [];
-
-    if (this.state.type === "sort") {
-      keys.forEach((item) => {
-        let _direction = this.checkSort(item, dataSort);
-
-        if (_direction) {
-          sort.push({
-            property: item,
-            direction: _direction.toUpperCase(),
-          });
-        }
-      });
-    }
-
-    // this.store = Ext.create("Ext.data.Store", {
-    //   model: senchaModelNameRandom,
-    //   data: data,
-    //   sorters: sort,
-    //   filters: [],
-    // });
-
-    // if (type === "filter") {
-    //   let _filters = this.store.getFilters();
-
-    //   filterData.forEach((itemFilter) => {
-    //     _filters.add((item) => this.getFilters(item, itemFilter));
-    //   });
-    // }
   };
 
   convertFormartArray = (
@@ -248,48 +203,6 @@ class Home extends Component {
   ) => {
     let keys = Object.keys(parseData[0]);
     this.setState({ columns: keys });
-    // let senchaModel = keys.map((item) => {
-    //   const model = {
-    //     name: item,
-    //     type: dataType[item],
-    //   };
-    //   return model;
-    // });
-    // let senchaModelNameRandom =
-    //   "SenchaModel" + (Math.random() + 1).toString(36).substring(7);
-
-    // Ext.define(senchaModelNameRandom, {
-    //   extend: "Ext.data.Model",
-    //   fields: senchaModel,
-    // });
-    let sort = [];
-
-    if (type === "sort") {
-      keys.forEach((item) => {
-        let _direction = this.checkSort(item, dataSort);
-
-        if (_direction) {
-          sort.push({
-            property: item,
-            direction: _direction.toUpperCase(),
-          });
-        }
-      });
-    }
-
-    // this.store = Ext.create("Ext.data.Store", {
-    //   data: parseData,
-    //   sorters: sort,
-    //   filters: [],
-    // });
-
-    // if (type === "filter") {
-    //   let _filters = this.store.getFilters();
-
-    //   filterData.forEach((itemFilter) => {
-    //     _filters.add((item) => this.getFilters(item, itemFilter));
-    //   });
-    // }
   };
 
   getFilters = (item, itemFilter) => {
@@ -314,22 +227,6 @@ class Home extends Component {
         return item.data[column].includes(value);
     }
   };
-
-  // onLogTimeData = async () => {
-  //   const startTime = new Date();
-  //   const endTime = new Date();
-  //   let data = {
-  //     trialNo: "20211125100900",
-  //     catId: "front-end",
-  //     itemId: "binding",
-  //     solId: "devext-grid",
-  //     startTime: startTime,
-  //     endTime: endTime,
-  //     note: "",
-  //   };
-
-  //   // const res = await axios.post("http://poc.poscoenc.com:8081/ServerTest/SaveResultData", {})
-  // };
 
   callbackDevExtreme = (
     id,
@@ -501,86 +398,31 @@ class Home extends Component {
     this.convertData(this.state.dataLoading, "sort", _dataSort);
   };
 
-  checkSort(columName, dataSort = []) {
-    if (!this.state.dataSort) {
-      return "";
-    }
-    let _dataSort = dataSort.length ? dataSort : this.state.dataSort;
-    let columSort = _dataSort.find((item) => {
-      let key = Object.keys(item)[0];
-      key = key.replaceAll(" ", "");
-
-      if (key.toLowerCase() === columName.toLowerCase()) {
-        return item[columName];
-      }
-    });
-
-    if (!columSort) {
-      return "";
-    }
-
-    return Object.values(columSort)[0];
-  }
-
   scrollData = () => {
     let data = JSON.parse(this.state.dataSource);
     let position = data.scroll;
-    this.setState({ isRenderExt: true });
     this.setState({ type: "scrolling" });
     
     position.forEach((item, i) => {
-      setTimeout(() => {
-        this.setState({ focusedRowKey: item.position });
-      }, i * 1000);
+      // setTimeout(() => {
+      //   this.setState({ focusedRowKey: item.position });
+      // }, i * 1000);
+      this.setState({ focusedRowKey: item.position });
     });
     
-  };
-
-  applyFilter = () => {
-    this.setState({ customerData: [] });
     this.setState({ isRenderExt: true });
-    this.setState({ isRenderSencha: true });
-    this.setState({ isRenderWismo: true });
-    this.setState({ type: "filter" });
-    
-    let filterData = JSON.parse(this.state.dataSource);
-    filterData = filterData.filterBy;
-    filterData = filterData.map((item) => {
-      let expr = item.expr.slice(0, 2);
-      let value = item.expr.slice(2, item.expr.length);
-      
-      if (!this.state.filterOperations.includes(expr)) {
-        expr = item.expr.slice(0, 1);
-        value = item.expr.slice(1, item.expr.length);
-      }
-      
-      if (!this.state.filterOperations.includes(expr)) {
-        expr = "contains";
-      }
-      
-      return {
-        column: item.column,
-        expr: expr,
-        value: value,
-      };
-    });
-    
-    this.setState({ filterData: filterData });
-    this.convertData(this.state.dataLoading, "filter", [], filterData);
   };
 
   groupByData = () => {
     this.setState({ groupBy: [] });
     this.setState({ focusedRowKey: null });
-    // this.bindingData()
     this.setState({ groupIndex: 0 });
-
+    this.setState({ type: "groupBy" });
+    
     let data = JSON.parse(this.state.dataSource);
     data = JSON.stringify(data.groupBy)
     this.setState({ groupBy: data });
     this.setState({ isRenderExt: true });
-    this.setState({ type: "groupBy" });
-    this.devTreeGrid.current.instance.refresh();
   };
 
   getSelectedOperation = (columnName) => {
@@ -655,12 +497,10 @@ class Home extends Component {
 
   handleSequenceTest = async () => {
     for (let i = 0; i < this.state.sequenceTestValue; i++) {
-      this.setState({ loadPanelVisible: true });
       await this.bindingData();
-      this.groupByData()
-      this.scrollData();
+      await this.groupByData();
+      await this.scrollData();
     }
-    this.setState({ loadPanelVisible: false });
   };
 
   callApiAndClearLog = async (e) => {
@@ -683,6 +523,7 @@ class Home extends Component {
     const data = selectedRowsData[0];
 
     this.setState({ focusedRowKey: data != undefined ? data.RowNo : null });
+    // this.setState({ focusedRowKey: data.RowNo});
   };
 
   onFocusedRowChanged(e) {
@@ -951,7 +792,7 @@ class Home extends Component {
                           showRowLines={true}
                           columnAutoWidth={true}
                           keyExpr="RowNo"
-                          // focusedRowEnabled={true}
+                          focusedRowEnabled={true}
                           // parentIdExpr="CtrtNo"
                           hoverStateEnabled={true}
                           onSelectionChanged={this.onSelectionChanged}
@@ -967,7 +808,6 @@ class Home extends Component {
                                 key={index + item}
                                 dataField={item}
                                 dataType={this.state.dataType[item]}
-                                sortOrder={this.checkSort(item)}
                                 filterOperations={this.state.filterOperations}
                                 filterType={this.state.filterType}
                                 selectedFilterOperation={this.getSelectedOperation( item )}
@@ -981,7 +821,6 @@ class Home extends Component {
                               key={index + item}
                               dataField={item}
                               dataType={this.state.dataType[item]}
-                              sortOrder={this.checkSort(item)}
                               filterOperations={this.state.filterOperations}
                               filterType={this.state.filterType}
                               selectedFilterOperation={this.getSelectedOperation( item )}
