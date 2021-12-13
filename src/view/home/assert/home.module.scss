@@ -9,10 +9,10 @@
     background: #153d6c;
     &.main_left_menu {
       width: 220px;
-      transition: width 1s;
+      transition: width;
     }
     &.left_hide {
-      transition: width 1s;
+      transition: width;
     }
     .top_menu {
       height: 80px;
@@ -51,10 +51,10 @@
     height: 100%;
     &.main_right_menu {
       width: calc(100% - 220px);
-      transition: width 1s;
+      transition: width;
     }
     &.right_hide {
-      transition: width 1s;
+      transition: width;
     }
     .top_content {
       height: 80px;
