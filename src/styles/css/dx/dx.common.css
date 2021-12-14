@@ -3989,7 +3989,8 @@
 .dx-datagrid .dx-row > td,
 .dx-datagrid .dx-row > tr > td {
   padding: 7px;
-  border: 1px #000 solid;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 .dx-datagrid .dx-error-row {
   -webkit-user-select: initial;
@@ -4185,7 +4186,7 @@
 }
 .dx-datagrid-content .dx-datagrid-table .dx-row .dx-cell-modified:not(.dx-field-item-content),
 .dx-datagrid-content .dx-datagrid-table .dx-row .dx-datagrid-invalid:not(.dx-field-item-content) {
-  padding: 0;
+  padding: 0.7rem;
 }
 .dx-datagrid-content .dx-datagrid-table .dx-row .dx-datagrid-invalid .dx-invalid-message.dx-overlay {
   position: static;
@@ -4491,6 +4492,7 @@
 }
 .dx-datagrid-total-footer {
   position: relative;
+  background-color: #fcaf17;
 }
 .dx-datagrid-total-footer > .dx-datagrid-content {
   padding-top: 7px;
