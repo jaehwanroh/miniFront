@@ -60,10 +60,23 @@ class Home extends Component {
       , groupBy:''
       , title: ''
       , grid: []
+      , renderCount: 0
+      , renderLog: []
+      , bindCount: 0
+      , bindLog: []
+      , editCount: 0
+      , groupByLog: []
+      , groupByCount: 0
+      , filterLog: []
+      , filterCount: 0
+      , editLog: []
+      , scrollingCount: 0
+      , scrollingLog: []
     };
     this.devTreeGrid = React.createRef();
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
     this.onFocusedRowChanged = this.onFocusedRowChanged.bind(this);
+    this.onContentReady = this.onContentReady.bind(this);
   }
 
   onChangeInputData = (event) => {
@@ -98,14 +111,27 @@ class Home extends Component {
 
   bindingData = () => {
     this.devTreeGrid.current.instance.state(null);
+    this.devTreeGrid.current.instance.clearSorting();
+    this.setState({
+      renderCount: 0
+      , dataSort: []
+      , renderLog: []
+      , bindCount: 0
+      , bindLog: []
+      , editCount: 0
+      , groupByLog: []
+      , groupByCount: 0
+      , filterLog: []
+      , filterCount: 0
+      , editLog: []
+      , scrollingCount: 0
+      , scrollingLog: []
+    })
     this.setState({ customerData: [] });
     this.setState({ columns: [] });
     this.setState({ groupBy: ''})
     this.setState({ focusedRowKey: null})
-    this.setState({
-      isRenderExt: true
-      , type: "rendering"
-    });
+    this.setState({ isRenderExt: true, type: "rendering" });
     let parseData = IsJsonString(this.state.dataSource)
     ? JSON.parse(this.state.dataSource)
     : [];
@@ -242,25 +268,157 @@ class Home extends Component {
     if (phase !== "mount" && !this.state.isRenderExt) {
       return;
     }
-    const sequenceExt = this.state.sequenceExt + 1;
-    let data = {
-      trialNo: this.formatTrialNo(),
-      catId: "front-end",
-      itemId: this.state.type,
-      solId: "devext-grid",
-      startTime: this.formatDateFromMilliseconds(_startTime),
-      endTime: this.formatDateFromMilliseconds(endTime),
-      labelTime: actualTime.toFixed(1),
-      seq: sequenceExt,
-      note: "",
-      createTime: this.formatCreateTime(),
-    };
-    
-    let logTime = this.state.logTimeData;
-    logTime.push(data);
-    this.setState({ logTimeData: logTime });
-    this.setState({ isRenderExt: false, sequenceExt: sequenceExt });
-    
+    if(this.state.type === 'rendering'){
+      
+      // if(this.state.renderCount === 1){
+      //   const sequenceExt = this.state.sequenceExt + 1;
+
+      //   let temp = this.state.renderLog
+      //   temp.seq = sequenceExt
+      //   temp.endTime = this.formatDateFromMilliseconds(endTime)
+
+      //   let logTime = this.state.logTimeData;
+      //   logTime.push(temp);
+      //   this.setState({ logTimeData: logTime });
+      //   this.setState({ isRenderExt: false, sequenceExt: sequenceExt, renderCount: 0, renderLog: [] });
+      // }
+      if(this.state.renderCount === 0){
+        const sequenceExt = this.state.sequenceExt + 1;
+        let data = {
+          trialNo: this.formatTrialNo(),
+          catId: "front-end",
+          itemId: this.state.type,
+          solId: "devext-grid",
+          startTime: this.formatDateFromMilliseconds(_startTime),
+          endTime: this.formatDateFromMilliseconds(endTime),
+          labelTime: actualTime.toFixed(1),
+          seq: 0,
+          note: "",
+          createTime: this.formatCreateTime(),
+        };
+        
+        let logTime = this.state.logTimeData;
+        logTime.push(data);
+        this.setState({ logTimeData: logTime });
+        this.setState({ isRenderExt: false, sequenceExt: sequenceExt, renderCount: 0, renderLog: [] });
+      }
+      else{
+        this.setState({ isRenderExt: false });
+      }
+    }
+    else if(this.state.type === 'binding'){
+      
+      // if(this.state.bindCount === 1){
+      //   const sequenceExt = this.state.sequenceExt + 1;
+
+      //   let temp = this.state.bindLog
+      //   temp.seq = sequenceExt
+      //   temp.endTime = this.formatDateFromMilliseconds(endTime)
+
+      //   let logTime = this.state.logTimeData;
+      //   logTime.push(temp);
+      //   this.setState({ logTimeData: logTime });
+      //   this.setState({ isRenderExt: false, sequenceExt: sequenceExt, bindCount: 0, bindLog: [] });
+      // }
+      if(this.state.bindCount === 0){
+        const sequenceExt = this.state.sequenceExt + 1;
+
+        let data = {
+          trialNo: this.formatTrialNo(),
+          catId: "front-end",
+          itemId: this.state.type,
+          solId: "devext-grid",
+          startTime: this.formatDateFromMilliseconds(_startTime),
+          endTime: this.formatDateFromMilliseconds(endTime),
+          labelTime: actualTime.toFixed(1),
+          seq: 0,
+          note: "",
+          createTime: this.formatCreateTime(),
+        };
+        
+        let logTime = this.state.logTimeData;
+        logTime.push(data);
+        this.setState({ logTimeData: logTime });
+        this.setState({ isRenderExt: false, sequenceExt: sequenceExt, bindCount: 0, bindLog: [] });
+      }
+      else{
+        this.setState({ isRenderExt: false });
+      }
+    }
+    else if(this.state.type === 'groupBy'){
+      
+      // if(this.state.groupByCount === 1){
+      //   const sequenceExt = this.state.sequenceExt + 1;
+
+      //   let temp = this.state.groupByLog
+      //   temp.seq = sequenceExt
+      //   temp.endTime = this.formatDateFromMilliseconds(endTime)
+
+      //   let logTime = this.state.logTimeData;
+      //   logTime.push(temp);
+      //   this.setState({ logTimeData: logTime });
+      //   this.setState({ isRenderExt: false, sequenceExt: sequenceExt, groupByCount: 0, groupByLog: [] });
+      // }
+      if(this.state.groupByCount === 0){
+        const sequenceExt = this.state.sequenceExt + 1;
+
+        let data = {
+          trialNo: this.formatTrialNo(),
+          catId: "front-end",
+          itemId: this.state.type,
+          solId: "devext-grid",
+          startTime: this.formatDateFromMilliseconds(_startTime),
+          endTime: this.formatDateFromMilliseconds(endTime),
+          labelTime: actualTime.toFixed(1),
+          seq: 0,
+          note: "",
+          createTime: this.formatCreateTime(),
+        };
+        
+        let logTime = this.state.logTimeData;
+        logTime.push(data);
+        this.setState({ logTimeData: logTime });
+        this.setState({ isRenderExt: false, sequenceExt: sequenceExt, groupByCount: 0, groupByLog: [] });
+      }
+      else{
+        this.setState({ isRenderExt: false });
+      }
+    }
+    else if(this.state.type === 'filter'){
+      
+      if(this.state.filterCount === 1){
+        const sequenceExt = this.state.sequenceExt + 1;
+
+        let temp = this.state.filterLog
+        temp.seq = sequenceExt
+        temp.endTime = this.formatDateFromMilliseconds(endTime)
+
+        let logTime = this.state.logTimeData;
+        logTime.push(temp);
+        this.setState({ logTimeData: logTime });
+        this.setState({ isRenderExt: false, sequenceExt: sequenceExt, filterCount: 0, filterLog: [] });
+      }
+      else if(this.state.filterCount === 0){
+        let data = {
+          trialNo: this.formatTrialNo(),
+          catId: "front-end",
+          itemId: this.state.type,
+          solId: "devext-grid",
+          startTime: this.formatDateFromMilliseconds(_startTime),
+          endTime: this.formatDateFromMilliseconds(endTime),
+          labelTime: actualTime.toFixed(1),
+          seq: 0,
+          note: "",
+          createTime: this.formatCreateTime(),
+        };
+        
+        this.setState({ filterLog : data });
+        this.setState({ isRenderExt: false });
+      }
+      else{
+        this.setState({ isRenderExt: false });
+      }
+    }
   };
 
   formatTrialNo() {
@@ -276,61 +434,6 @@ class Home extends Component {
   formatCreateTime() {
     return moment().utcOffset("+0900").format("YYYY-MM-DD HH:mm:ss.ms");
   }
-
-  callbackSencha = (id, phase, actualTime, baseTime, startTime, commitTime) => {
-    let endTime = new Date().valueOf();
-    let _startTime = endTime - actualTime;
-
-    if (phase !== "mount" && !this.state.isRenderSencha) {
-      return;
-    }
-
-    const sequenceSencha = this.state.sequenceSencha + 1;
-    let data = {
-      trialNo: this.formatTrialNo(),
-      catId: "front-end",
-      itemId: this.state.type,
-      solId: "sencha-grid",
-      startTime: this.formatDateFromMilliseconds(_startTime),
-      endTime: this.formatDateFromMilliseconds(endTime),
-      labelTime: actualTime.toFixed(1),
-      sequence: sequenceSencha,
-      note: "",
-      createTime: this.formatCreateTime(),
-    };
-
-    let logTime = this.state.logTimeData;
-    logTime.push(data);
-    this.setState({ logTimeData: logTime });
-    this.setState({ isRenderSencha: false, sequenceSencha: sequenceSencha });
-  };
-
-  callbackWismo = (id, phase, actualTime, baseTime, startTime, commitTime) => {
-    let endTime = new Date().valueOf();
-    let _startTime = endTime - actualTime;
-
-    if (phase !== "mount" && !this.state.isRenderWismo) {
-      return;
-    }
-    const sequenceWismo = this.state.sequenceWismo + 1;
-    let data = {
-      trialNo: this.formatTrialNo(),
-      catId: "front-end",
-      itemId: this.state.type,
-      solId: "wismo-grid",
-      startTime: this.formatDateFromMilliseconds(_startTime),
-      endTime: this.formatDateFromMilliseconds(endTime),
-      labelTime: actualTime.toFixed(1),
-      sequence: sequenceWismo,
-      note: "",
-      createTime: this.formatCreateTime(),
-    };
-
-    let logTime = this.state.logTimeData;
-    logTime.push(data);
-    this.setState({ logTimeData: logTime });
-    this.setState({ isRenderWismo: false, sequenceWismo: sequenceWismo });
-  };
 
   showMenu = () => {
     this.setState({ isShowMenu: !this.state.isShowMenu });
@@ -382,6 +485,18 @@ class Home extends Component {
       , sequenceLoading: 0
       , title: ''
       , groupIndex: 0
+      , renderCount: 0
+      , renderLog: []
+      , bindCount: 0
+      , bindLog: []
+      , editCount: 0
+      , editLog: []
+      , groupByCount: 0
+      , groupByLog: []
+      , filterCount: 0
+      , filterLog: []
+      , scrollingCount: 0
+      , scrollingLog: []
     });
   };
 
@@ -409,8 +524,25 @@ class Home extends Component {
       // }, i * 1000);
       this.setState({ focusedRowKey: item.position });
     });
-    
-    this.setState({ isRenderExt: true });
+    const startTime = new Date().valueOf();
+    const endTime = new Date().valueOf();
+    const sequenceLoading = this.state.sequenceLoading + 1;
+    const loadDatalog = {
+      trialNo: this.formatTrialNo(),
+      catId: "front-end",
+      itemId: "scrolling",
+      solId: "devext-grid",
+      startTime: this.formatDateFromMilliseconds(startTime),
+      endTime: this.formatDateFromMilliseconds(endTime),
+      labelTime: (endTime - startTime).toFixed(1),
+      seq: sequenceLoading,
+      createTime: this.formatCreateTime(),
+      note: 'dev'
+    };
+    let logTime = this.state.logTimeData;
+    logTime.push(loadDatalog);
+    this.setState({ logTimeData: logTime });
+    this.setState({ sequenceLoading: sequenceLoading });
   };
 
   groupByData = () => {
@@ -529,6 +661,25 @@ class Home extends Component {
   onFocusedRowChanged(e) {
     this.setState({ focusedRowKey: e.component.option('focusedRowKey') });
   }
+
+  onContentReady(e){
+    if(this.state.type === 'rendering'){
+      this.setState({ renderCount: this.state.renderCount + 1 }, () => console.log(this.state.renderCount));
+      this.setState({ isRenderExt: true});
+    }
+    else if(this.state.type === 'binding'){
+      this.setState({ bindCount: this.state.bindCount + 1 }, () => console.log(this.state.bindCount));
+      this.setState({ isRenderExt: true});
+    }
+    else if(this.state.type === 'groupBy'){
+      this.setState({ groupByCount: this.state.groupByCount + 1 }, () => console.log(this.state.groupByCount));
+      this.setState({ isRenderExt: true});
+    }
+    else if(this.state.type === 'scrolling'){
+      this.setState({ scrollingCount: this.state.scrollingCount + 1 }, () => console.log(this.state.scrollingCount));
+      this.setState({ isRenderExt: true});
+    }
+  };
 
   render() {
     return (

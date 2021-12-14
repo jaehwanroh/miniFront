@@ -342,19 +342,6 @@ class Home extends Component {
       }
     }
     else if(this.state.type === 'edit'){
-      
-      // if(this.state.editCount === 2){
-      //   const sequenceExt = this.state.sequenceExt + 1;
-
-      //   let temp = this.state.editLog
-      //   temp.seq = sequenceExt
-      //   temp.endTime = this.formatDateFromMilliseconds(endTime)
-
-      //   let logTime = this.state.logTimeData;
-      //   logTime.push(temp);
-      //   this.setState({ logTimeData: logTime });
-      //   this.setState({ isRenderExt: false, sequenceExt: sequenceExt, editCount: 0, editLog: [] });
-      // }
       if(this.state.editCount === 2){
         const sequenceExt = this.state.sequenceExt + 1;
         let data = {
