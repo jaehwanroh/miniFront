@@ -3,6 +3,7 @@ import styles from "../home/assert/home.module.scss";
 import { IsJsonString, styleCombine } from "../../common/helper";
 import MasterLayout from "../layout/MasterLayout";
 import { DataGrid, Column, ColumnChooser, ColumnFixing, Editing, RequiredRule, PatternRule, EmailRule } from "devextreme-react/data-grid";
+import { CustomRule } from 'devextreme-react/validator';
 import TextBox from 'devextreme-react/text-box';
 import "devextreme/data/odata/store";
 import { LoadPanel } from 'devextreme-react/load-panel';
@@ -74,6 +75,11 @@ class Home extends Component {
     //   e.editorName = 'dxTextBox';
     //   e.editorOptions.mask = '#,##0.##'
     // }
+    
+  };
+
+  onContentReady(){
+    document.getElementsByClassName('dx-toolbar-items-container')[0].style.display = 'none'
   };
 
   calculateCellValue(data) {
@@ -92,6 +98,10 @@ class Home extends Component {
     this.setState({ isVal: this.state.isVal === true ? false : true });
     // alert('현재 이 기능은 DevExtreme에서 지원하지 않습니다.');
   };
+
+  validate(e) {
+    return e.value !== "";
+  }
 
   excel(){
     alert('현재 이 기능은 DevExtreme에서 지원하지 않습니다.');
@@ -287,6 +297,7 @@ class Home extends Component {
                     allowColumnResizing={true}
                     columnAutoWidth={true}
                     showBorders={true}
+                    onContentReady = {this.onContentReady}
                     // onEditorPreparing={this.onEditorPreparing}
                   >
                     <Editing
@@ -295,27 +306,78 @@ class Home extends Component {
                     />
                     <ColumnFixing enabled={true} />
                     <Column caption="Employee" width={230} fixed={this.state.columnFixed} calculateCellValue={this.calculateCellValue} />
-                    {this.state.isMulti === true ? (
-                      <Column caption="날짜">
-                        <Column dataField="BirthDate" caption="생년월일" dataType="date" width={230}/>
-                        <Column dataField="HireDate" caption="고용일" dataType="date" width={230}/>
-                      </Column>
-                    ) : (
-                      <Column dataField="BirthDate1" caption="생년월일" dataType="date" width={230}/>
-                    )}
+                      {this.state.isMulti === true ? (
+                        <Column caption="날짜">
+                          <Column dataField="BirthDate" caption="생년월일" dataType="date" width={230}/>
+                          <Column dataField="HireDate" caption="고용일" dataType="date" width={230}/>
+                        </Column>
+                      ) : (
+                        <Column dataField="BirthDate1" caption="생년월일" dataType="date" width={230}/>
+                      )}
                     <Column dataField="HireDate1" caption="고용일" dataType="date" width={230} visible={!this.state.isMulti} format= "shortDate"/>
                     <Column dataField="Pay" alignment="right" format="#,##0.##" width={230}  />
                     <Column dataField="Position" alignment="right" width={230} />
-                    <Column dataField="Address" width={230} />
-                    <Column dataField="City" width={230} />
-                    <Column dataField="State"width={230} />
-                    <Column dataField="HomePhone" editorOptions= 'phoneEditorOptions'/>
-                    <Column dataField="MobilePhone" />
+                    <Column dataField="Address" width={230} >
+                      {this.state.isVal === true ? (
+                        <CustomRule 
+                        validationCallback={this.validate}
+                        message="주소를 입력해주세요."/>
+                      ) : ("")}
+                    </Column>
+                    <Column dataField="City" width={230} >
+                      {this.state.isVal === true ? (
+                        <CustomRule 
+                        validationCallback={this.validate}
+                        message="도시를 입력해주세요."/>
+                      ) : ("")}
+                    </Column>
+                    <Column dataField="State"width={230} >
+                      {this.state.isVal === true ? (
+                        <CustomRule 
+                        validationCallback={this.validate}
+                        message="주를 입력해주세요."/>
+                      ) : ("")}
+                    </Column>
+                    <Column dataField="HomePhone" dataType='string'>
+                      {/* {this.state.isVal === true ? (<RequiredRule />) : ("")} */}
+                      {this.state.isVal === true ? (
+                        <CustomRule 
+                        validationCallback={this.validate}
+                        message="집전화번호를 입력해주세요."/>
+                      ) : ("")}
+                      {this.state.isVal === true ? (
+                        <PatternRule
+                        message={'다음과 같은 형식에 맞춰 입력해주세요.'}
+                        pattern={/^\\d{3}\ \d{4}-\d{4}$/i}
+                        />
+                      ) : ("")}
+                    </Column>
+                    <Column dataField="MobilePhone" dataType='string'>
+                      {this.state.isVal === true ? (
+                        <CustomRule 
+                        validationCallback={this.validate}
+                        message="휴대전화번호를 입력해주세요."/>
+                      ) : ("")}
+                      {this.state.isVal === true ? (
+                        <PatternRule
+                        message={'다음과 같은 형식에 맞춰 입력해주세요.'}
+                        pattern={/^\\d{3}\ \d{4}-\d{4}$/i}
+                        />
+                      ) : ("")}
+                    </Column>
                     <Column dataField="Skype" >
-                      <RequiredRule />
+                      {this.state.isVal === true ? (
+                        <CustomRule 
+                        validationCallback={this.validate}
+                        message="Skype아이디를 입력해주세요."/>
+                      ) : ("")}
                     </Column>
                     <Column dataField="Email" >
-                      {this.state.isVal === true ? (<RequiredRule />) : ("")}
+                      {this.state.isVal === true ? (
+                        <CustomRule 
+                        validationCallback={this.validate}
+                        message="이메일을 입력해주세요."/>
+                      ) : ("")}
                       {this.state.isVal === true ? (<EmailRule />) : ("")}
                     </Column>
                   </DataGrid>
