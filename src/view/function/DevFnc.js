@@ -347,7 +347,7 @@ class Home extends Component {
                       ) : ("")}
                       {this.state.isVal === true ? (
                         <PatternRule
-                        message={'다음과 같은 형식에 맞춰 입력해주세요.'}
+                        message={'다음과 같은 형식에 맞춰 입력해주세요. ex) 010-1234-1234'}
                         pattern={/^\\d{3}\ \d{4}-\d{4}$/i}
                         />
                       ) : ("")}
@@ -360,7 +360,7 @@ class Home extends Component {
                       ) : ("")}
                       {this.state.isVal === true ? (
                         <PatternRule
-                        message={'다음과 같은 형식에 맞춰 입력해주세요.'}
+                        message={'다음과 같은 형식에 맞춰 입력해주세요. ex) 010-1234-1234'}
                         pattern={/^\\d{3}\ \d{4}-\d{4}$/i}
                         />
                       ) : ("")}
