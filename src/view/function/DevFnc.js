@@ -2,7 +2,7 @@ import React, { Component, Profiler } from "react";
 import styles from "../home/assert/home.module.scss";
 import { IsJsonString, styleCombine } from "../../common/helper";
 import MasterLayout from "../layout/MasterLayout";
-import { DataGrid, Column, ColumnChooser, ColumnFixing, Editing } from "devextreme-react/data-grid";
+import { DataGrid, Column, ColumnChooser, ColumnFixing, Editing, RequiredRule, PatternRule, EmailRule } from "devextreme-react/data-grid";
 import TextBox from 'devextreme-react/text-box';
 import "devextreme/data/odata/store";
 import { LoadPanel } from 'devextreme-react/load-panel';
@@ -31,6 +31,7 @@ class Home extends Component {
       , isMask: false
       , isNew: false
       , isHide: false
+      , isVal: false
     };
     this.gridFnc = React.createRef();
     this.employees = service.getEmployees();
@@ -88,8 +89,8 @@ class Home extends Component {
   };
 
   mask(){
-    // this.setState({ isMask: this.state.isMask === true ? false : true });
-    alert('현재 이 기능은 DevExtreme에서 지원하지 않습니다.');
+    this.setState({ isVal: this.state.isVal === true ? false : true });
+    // alert('현재 이 기능은 DevExtreme에서 지원하지 않습니다.');
   };
 
   excel(){
@@ -281,7 +282,7 @@ class Home extends Component {
                     id="gridFnc"
                     ref={this.gridFnc}
                     dataSource={this.employees}
-                    keyExpr="ID"
+                    // keyExpr="ID"
                     allowColumnReordering={true}
                     allowColumnResizing={true}
                     columnAutoWidth={true}
@@ -289,7 +290,7 @@ class Home extends Component {
                     // onEditorPreparing={this.onEditorPreparing}
                   >
                     <Editing
-                      mode="cell"
+                      mode="batch"
                       allowUpdating={true}
                     />
                     <ColumnFixing enabled={true} />
@@ -310,8 +311,13 @@ class Home extends Component {
                     <Column dataField="State"width={230} />
                     <Column dataField="HomePhone" editorOptions= 'phoneEditorOptions'/>
                     <Column dataField="MobilePhone" />
-                    <Column dataField="Skype" />
-                    <Column dataField="Email" />
+                    <Column dataField="Skype" >
+                      <RequiredRule />
+                    </Column>
+                    <Column dataField="Email" >
+                      {this.state.isVal === true ? (<RequiredRule />) : ("")}
+                      {this.state.isVal === true ? (<EmailRule />) : ("")}
+                    </Column>
                   </DataGrid>
                   </div>
                 </div>
