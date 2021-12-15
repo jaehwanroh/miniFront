@@ -729,19 +729,21 @@ class Home extends Component {
                       </ListItemButton>
                     </Link>
                     <Link to="/DevCalGrid" style={{ textDecoration: 'none', color: 'white' }}>
-                    <ListItemButton>
-                      <ListItemText
-                        className={styles.description_bottom}
-                        primary="데이타그리드 계산"
-                      />
-                    </ListItemButton>
+                      <ListItemButton>
+                        <ListItemText
+                          className={styles.description_bottom}
+                          primary="데이타그리드 계산"
+                        />
+                      </ListItemButton>
                     </Link>
-                    <ListItemButton>
-                      <ListItemText
-                        className={styles.description_bottom}
-                        primary="데이터그리드 기능"
-                      />
-                    </ListItemButton>
+                    <Link to="/DevFnc" style={{ textDecoration: 'none', color: 'white' }}>
+                      <ListItemButton>
+                        <ListItemText
+                          className={styles.description_bottom}
+                          primary="데이터그리드 기능"
+                        />
+                      </ListItemButton>
+                    </Link>
                   </List>
                 </Collapse>
               </List>
